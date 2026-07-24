@@ -99,21 +99,6 @@ rustup (installer/gérer Rust)
 
 Le flux typique : on écrit le code dans `src/main.rs`, on édite `Cargo.toml` pour les dépendances, on lance `cargo check` fréquemment pendant l'écriture, `cargo run` pour tester, et `cargo build --release` pour livrer.
 
-## Comparaison avec JavaScript / TypeScript
-
-| Concept | Rust | JS/TS |
-|---|---|---|
-| Exécution | Compilé (ahead-of-time) → binaire standalone | Interprété ou JIT → nécessite Node.js ou navigateur |
-| Gestionnaire de paquets | Cargo + crates.io | npm / yarn + npm registry |
-| Point d'entrée | `fn main() {}` | Pas de fonction imposée ; le fichier est exécuté de haut en bas |
-| Macro vs fonction | `println!()` (macro) | Pas d'équivalent direct (les macros existent via Babel, mais pas natives) |
-| Configuration projet | `Cargo.toml` (TOML) | `package.json` (JSON) |
-| Version lock | `Cargo.lock` (auto-géré) | `package-lock.json` / `yarn.lock` (auto-géré) |
-| Compilation rapide | `cargo check` (vérifie sans binaire) | `tsc --noEmit` (vérifie sans emit) |
-| Format de projet | `src/` pour le code, config à la racine | Convention similaire (`src/`, config à la racine) |
-
-Différence fondamentale : Rust compile en binaire natif, pas besoin d'exécuter `npm install` ou d'installer Node.js sur la machine cible. En contrepartie, le cycle compiler → exécuter est plus lent qu'un simple `node index.js`.
-
 ## Pièges classiques
 
 1. **Oublier `!` dans `println!`** — `println` sans `!` est une fonction inexistante → erreur de compilation.

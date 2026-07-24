@@ -214,25 +214,6 @@ Contrôle :
   for x in iter { }
 ```
 
-## Comparaison avec JavaScript / TypeScript
-
-| Concept | Rust | JS/TS |
-|---|---|---|
-| Immuabilité par défaut | `let` = immuable, `let mut` = mutable | `const` = immuable (référence), `let` = mutable |
-| Constante | `const X: u32 = 5;` | `const X = 5;` |
-| Condition dans `if` | Doit être `bool` | Truthy/falsy autorisé |
-| Entier par défaut | `i32` | `number` (64-bit flottant) |
-| Types de nombres | `i8..i128`, `u8..u128`, `f32`, `f64` | `number` (tout en flottant 64-bit) |
-| `char` | 4 octets, Unicode | une seule chaîne de 1 char |
-| Tableau | Taille fixe, même type | Taille dynamique, types hétérogènes |
-| Tuple | `(i32, f64)` natif | pas de tuple natif (TS : `[number, string]` comme tuple) |
-| Division entière | Tronque vers zéro (`2/3 = 0`) | Pas de division entière (`2/3 = 0.666`) |
-| Fonction | Type obligatoire pour params et retour | Types optionnels (TS) |
-| Valeur de retour | Dernière expression (implicite) ou `return` | `return` obligatoire (ou `undefined`) |
-| `for...in` vs `for...of` | `for x in iter` (équivalent de `for...of`) | `for...in` (clés) / `for...of` (valeurs) |
-| `break` avec valeur | `let r = loop { break 5; };` | Pas possible en JS natif |
-| Conversion implicite | Aucune — `if (0)` ne compile pas | Truthy/falsy omniprésent |
-
 ## Pièges classiques
 
 1. **Oublier `mut`** — `let x = 5; x = 6;` ne compile pas.

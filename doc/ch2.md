@@ -151,20 +151,6 @@ Programme :
        e. break si égal
 ```
 
-## Comparaison avec JavaScript / TypeScript
-
-| Concept | Rust | JS/TS |
-|---|---|---|
-| Entrée standard | `io::stdin().read_line()` | `readline` / `prompt()` (Node) |
-| Concaténation formatée | `println!("x = {}", x)` | `console.log(\`x = \${x}\`)` |
-| Parse de string en int | `s.trim().parse::<u32>()` | `parseInt(s)` |
-| Aléatoire | `rand::thread_rng().gen_range(1..101)` | `Math.random() * 100 + 1` |
-| Boucle infinie | `loop { }` | `while (true) { }` |
-| Sortie de boucle | `break` | `break` |
-| Gestion d'erreur | `match result { Ok(v) => v, Err(_) => continue }` | `try/catch` |
-| Dépendances | `Cargo.toml` + `crates.io` | `package.json` + `npm` |
-| Shadowing | `let x = x.parse()...` (change le type) | impossible (TS: union type) |
-
 ## Pièges classiques
 
 1. **Oublier `mut`** sur une variable qu'on modifie (ex: `supposition` passée à `read_line`).

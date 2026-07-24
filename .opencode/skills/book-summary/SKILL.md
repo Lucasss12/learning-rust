@@ -52,10 +52,6 @@ Lister celles introduites dans le chapitre avec une courte explication.
 
 Expliquer comment les différents concepts sont liés entre eux.
 
-## Comparaison avec JavaScript / TypeScript
-
-Lorsque c'est pertinent, expliquer les différences de fonctionnement.
-
 ## Pièges classiques
 
 Lister les erreurs que font les débutants.
