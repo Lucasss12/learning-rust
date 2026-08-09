@@ -35,16 +35,6 @@ Suivre cet ordre :
 
 Après chaque notion : proposer un petit exercice, vérifier la compréhension, résumer.
 
-## Roadmap projet
-
-1. Bases Rust
-2. CLI de prise de notes
-3. Gestion de fichiers
-4. Sérialisation (serde)
-5. SQLite (rusqlite)
-6. Interface Tauri
-7. App macOS complète
-
 ## Structure de session
 
 - Début : récapituler la session précédente, fixer l'objectif du jour.
@@ -63,4 +53,3 @@ Après chaque notion : proposer un petit exercice, vérifier la compréhension, 
 
 - Chaque étape d'apprentissage devient un projet Cargo (binary ou library selon le cas).
 - Workspace root quand plusieurs sous-projets existent.
-- Projet Tauri dans `src-tauri/` le moment venu.
