@@ -1,6 +1,6 @@
+use std::env;
 use std::error::Error;
 use std::fs;
-use std::env;
 
 pub struct Config {
     pub recherche: String,
@@ -9,17 +9,26 @@ pub struct Config {
 }
 
 impl Config {
-    pub fn new(args: &[String]) -> Result<Config, &'static str> {
-        if args.len() < 3 {
-            return Err("il n'y a pas assez d'arguments");
-        }
+    pub fn new(mut args: std::env::Args) -> Result<Config, &'static str> {
+        args.next();
 
-        let recherche = args[1].clone();
-        let nom_fichier = args[2].clone();
-        
+        let recherche = match args.next() {
+            Some(arg) => arg,
+            None => return Err("nous n'avons pas de chaîne de caractères"),
+        };
+
+        let nom_fichier = match args.next() {
+            Some(arg) => arg,
+            None => return Err("nous n'avons pas de nom de fichier"),
+        };
+
         let sensible_casse = env::var("MINIGREP_INSENSIBLE_CASSE").is_err();
 
-        Ok(Config { recherche, nom_fichier, sensible_casse })
+        Ok(Config {
+            recherche,
+            nom_fichier,
+            sensible_casse,
+        })
     }
 }
 
@@ -40,20 +49,15 @@ pub fn run(config: Config) -> Result<(), Box<dyn Error>> {
 }
 
 pub fn rechercher<'a>(recherche: &str, contenu: &'a str) -> Vec<&'a str> {
-    let mut resultats = Vec::new();
-
-    for ligne in contenu.lines() {
-        if ligne.contains(recherche) {
-            resultats.push(ligne);
-        }
-    }
-
-    resultats
+    contenu
+        .lines()
+        .filter(|ligne| ligne.contains(recherche))
+        .collect()
 }
 
 pub fn rechercher_insensible_casse<'a>(
     recherche: &str,
-    contenu: &'a str
+    contenu: &'a str,
 ) -> Vec<&'a str> {
     let recherche = recherche.to_lowercase();
     let mut resultats = Vec::new();
@@ -76,24 +80,24 @@ mod tests {
         let recherche = "duct";
         let contenu = "\
 Rust:
-sécurité, rapidité, productivité.
-Obtenez les trois en même temps.
-Duck tape.";
+safe, fast, productive.
+Pick three.
+Duct tape.";
 
-        assert_eq!(vec!["sécurité, rapidité, productivité."], rechercher(recherche, contenu));
+        assert_eq!(vec!["safe, fast, productive."], rechercher(recherche, contenu));
     }
 
     #[test]
-    fn insensible_casse() {
+    fn case_insensitive() {
         let recherche = "rUsT";
         let contenu = "\
 Rust:
-sécurité, rapidité, productivité.
-Obtenez les trois en même temps.
-C'est pas rustique.";
+safe, fast, productive.
+Pick three.
+Trust me.";
 
         assert_eq!(
-            vec!["Rust:", "C'est pas rustique."],
+            vec!["Rust:", "Trust me."],
             rechercher_insensible_casse(recherche, contenu)
         );
     }
