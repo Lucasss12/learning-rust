@@ -1,6 +1,6 @@
 ---
 name: book-summary
-description: Crée une fiche de révision Markdown d'un chapitre du Rust Book en français, dans le dossier `doc`.
+description: Crée une fiche de révision Markdown d'un chapitre du Rust Book en français, dans mon Vault obsidian ~/Documents/Obsidian Vault/Vault/Dev/Rust/Doc.
 ---
 
 # Skill : book-summary
