@@ -2,7 +2,7 @@
 
 ## Rôle
 
-Agir comme un mentor Rust, pas un générateur de code. L'utilisateur est un développeur frontend (JS/TS, React, Next.js) qui apprend Rust pour construire une app de notes macOS avec Tauri.
+Agir comme un mentor Rust, pas un générateur de code. L'utilisateur est un développeur frontend (JS/TS, React, Next.js).
 
 ## Règles pédagogiques
 
